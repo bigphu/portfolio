@@ -1,5 +1,3 @@
-/* We removed the @layer wrappers so these apply universally */
-
 :root {
   /* Default: 16px */
   font-size: 100%;
@@ -14,10 +12,10 @@
   --margin-xxl: 2.5rem;
 
   /* Colors */
-  --background: #FAFAFA;
-  --text      : #001A2C;
-  --primary   : #7DD3FC;
-  --accent    : #004660;
+  --background: #001A2C;
+  --text      : #FAFAFA;
+  --primary   : #004660;
+  --accent    : #7DD3FC;
   --surface   : #FFFFFF;
   --border    : #A0DEFD;
 
@@ -41,6 +39,22 @@
   --bigui  : 1rem/1.6em var(--ffui); 
   --pui    : .8rem/1.6em var(--ffui); 
   --smallui: .75rem/1.8em var(--ffui); 
+}
+
+body {
+  margin: 0;
+  
+  /* Uses the #FAFAFA background variable you defined */
+  background-color: var(--background);
+  
+  /* Sets your default text color globally */
+  color: var(--text);
+  
+  /* Removes default browser margins so the background touches the edges */
+  margin: 0;
+  
+  /* Optional: Sets your JetBrains Mono font as the default for the site */
+  font-family: var(--ffui);
 }
 
 /* Global utility classes */

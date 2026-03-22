@@ -1,25 +1,23 @@
 import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import type { JSX } from "react";
-// import "./App.css"
-import "@/data/global.css";
-import { Home } from "@/pages";
+
+import "@/data/global.css"; 
 import { Preloader } from "@/components";
+import { ShootingStars } from "@/components"; 
 
 const App = (): JSX.Element => {
-
   return (
     <Router>
       <div className="app-container">
-        <Preloader />
-        {/* <Navbar/> */}
+        <ShootingStars />
 
         <main>
-          <Routes>
+          {/* <Routes>
             <Route path="/" element={<Home/>}/>
-          </Routes>
+          </Routes> */}
+          <Preloader />
         </main>
 
-        {/* <Footer/> */}
       </div>
     </Router>
   )
