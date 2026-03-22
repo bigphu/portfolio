@@ -1,0 +1,75 @@
+.preloader-container {
+  z-index: 100;
+  background-color: transparent;
+  position: fixed;
+  inset: 0;
+  display: flex;
+  animation: hide-preloader 0.1s linear forwards;
+}
+
+.curtain-col {
+  background-color: black;
+  height: 100%;
+  animation: slide-down cubic-bezier(0.85, 0, 0.15, 1) both;
+}
+
+.preloader-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--surface);
+  font: var(--h1);
+  font-size: 12.5rem;
+  line-height: 1.2em;
+  display: flex;
+  flex-direction: column; /* Stacks the lines vertically */
+  align-items: center;    /* Centers the text horizontally */
+  margin: 0;
+}
+
+.text-line {
+  display: flex;
+  overflow: hidden; 
+}
+
+.letter {
+  display: inline-block; 
+  animation: reveal-letter cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+@keyframes hide-preloader {
+  100% {
+    opacity: 0;
+    visibility: hidden; 
+    pointer-events: none;
+  }
+}
+
+@keyframes slide-down {
+  0% { transform: translateY(0%); }
+  100% { transform: translateY(100%); }
+}
+
+@keyframes reveal-letter {
+  0%   { 
+    transform: translateY(120%); 
+    opacity: 1; 
+  }
+  15%  { 
+    transform: translateY(0); 
+    opacity: 1;     /* Pops up quickly */
+  }    
+  75%  { 
+    transform: translateY(0); 
+    opacity: 1;     /* Holds on screen */
+  }    
+  80%  { 
+    transform: translateY(0); 
+    opacity: 0.5;     /* Holds on screen */
+  }    
+  100% { 
+    transform: translateY(0); 
+    opacity: 0;     /* Fades out */
+  }    
+}

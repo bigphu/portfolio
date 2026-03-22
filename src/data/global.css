@@ -1,0 +1,55 @@
+/* We removed the @layer wrappers so these apply universally */
+
+:root {
+  /* Default: 16px */
+  font-size: 100%;
+
+  /* Margins */
+  --margin-xxs: .25rem;
+  --margin-xs : .5rem;
+  --margin-s  : .75rem;
+  --margin-m  : 1rem;
+  --margin-l  : 1.25rem;
+  --margin-xl : 1.75rem;
+  --margin-xxl: 2.5rem;
+
+  /* Colors */
+  --background: #FAFAFA;
+  --text      : #001A2C;
+  --primary   : #7DD3FC;
+  --accent    : #004660;
+  --surface   : #FFFFFF;
+  --border    : #A0DEFD;
+
+  /* Typography */
+  /* Titles */
+  --ff   : "Audiowide", sans-serif;
+  --h1   : bold 4rem/1em var(--ff); 
+  --h2   : bold 3rem/1.2em var(--ff); 
+  --h3   : bold 2.25rem/1.2em var(--ff); 
+  --h4   : bold 1.5rem/1.6em var(--ff); 
+  --big  : 1.25rem/1.6em var(--ff); 
+  --p    : 1rem/1.6em var(--ff); 
+  --small: .75rem/2em var(--ff); 
+
+  /* UIs */
+  --ffui   : "JetBrains Mono", monospace;
+  --h1ui   : bold 3rem/1.2em var(--ffui); 
+  --h2ui   : bold 2.25rem/1.2em var(--ffui); 
+  --h3ui   : bold 1.5rem/1.2em var(--ffui); 
+  --h4ui   : bold 1.12rem/1.6em var(--ffui); 
+  --bigui  : 1rem/1.6em var(--ffui); 
+  --pui    : .8rem/1.6em var(--ffui); 
+  --smallui: .75rem/1.8em var(--ffui); 
+}
+
+/* Global utility classes */
+.grid {
+  gap: 1.5rem;
+}
+
+.markdown-text ul {
+  padding-left   : 1.25rem;
+  margin-top     : 0.5rem;
+  list-style-type: disc;
+}
