@@ -1,0 +1,57 @@
+/* 
+  INJECTED VARIABLES
+
+  --star-x
+  --star-y
+  --star-len 
+  --star-duration
+  --star-dist 
+*/
+
+.stars-container {
+  position: fixed;
+  inset: 0;
+  z-index: -1; /* Keeps it strictly in the background */
+  overflow: hidden;
+  background-color: var(--background);
+  pointer-events: none; /* Lets clicks pass through to your website */
+}
+
+.shooting-star {
+  position: absolute;
+  width: var(--star-len);
+  height: 1px;
+
+  top: var(--star-y);
+  left: calc(var(--star-x) - var(--star-len));
+  
+  background: linear-gradient(
+    90deg, 
+    rgba(125, 211, 252, 0) 0%, 
+    var(--primary) 60%, 
+    var(--accent) 100%
+  );
+
+  animation: shoot var(--star-duration) linear forwards;
+}
+
+@keyframes shoot {
+  0% {
+    /* Starts angled, scaled down, and invisible */
+    transform: rotate(35deg) translateX(0) scaleX(0);
+    opacity: 0;
+  }
+  10% {
+    /* Quickly fades in and stretches to full length */
+    opacity: 1;
+    transform: rotate(35deg) translateX(0) scaleX(1);
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    /* Shoots forward along its angled axis and fades out */
+    transform: rotate(35deg) translateX(var(--star-dist)) scaleX(1);
+    opacity: 0;
+  }
+}
