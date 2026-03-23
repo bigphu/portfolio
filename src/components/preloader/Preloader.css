@@ -9,14 +9,13 @@
   --letter-delay 
 */
 
-
 .preloader-container {
   z-index: 100;
   background-color: transparent;
   position: fixed;
   inset: 0;
   display: flex;
-  animation: hide-preloader 0.1s linear var(--preloader-delay) forwards;
+  /* animation: hide-preloader 0.1s linear var(--preloader-delay) forwards; */
 }
 
 .curtain-col {
@@ -31,22 +30,17 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: var(--surface);
-  font: var(--h1);
-  font-size: 12.5rem;
-  line-height: 1.2em;
   display: flex;
-  flex-direction: column; /* Stacks the lines vertically */
-  align-items: center; /* Centers the text horizontally */
+  justify-content: center;
+  overflow: hidden;
   margin: 0;
 }
 
-.text-line {
-  display: flex;
-  overflow: hidden;
-}
-
 .letter {
+  color: var(--text);
+  font: var(--h1);
+  font-size: clamp(3.5rem, 12vw, 12rem);
+  line-height: 1.2em;
   display: inline-block;
   animation: reveal-letter var(--letter-duration) cubic-bezier(0.4, 0, 0.2, 1) var(--letter-delay) both;
 }
