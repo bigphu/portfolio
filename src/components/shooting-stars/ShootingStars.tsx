@@ -1,4 +1,5 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from "react";
+import type { JSX, ReactElement } from "react"
 import './ShootingStars.css';
 
 interface Star {
@@ -37,7 +38,7 @@ const offsetLen: number = maxTrailLen - minTrailLen;
 const offsetTravelDist: number = maxTravelDist - minTravelDist;
 const offsetDuration: number = maxDuration - minDuration;
 
-const ShootingStars = () => {
+const ShootingStars = (): JSX.Element => {
 
   const [stars, setStars] = useState<Map<number, Star>>(new Map());
   const timeoutsRef = useRef<Map<number, ReturnType<typeof setTimeout>>>(new Map());
@@ -49,7 +50,7 @@ const ShootingStars = () => {
       const starCount: number = Math.floor(Math.random() * offsetCount) + minStarCount;
 
       // Spawn from 1 to 5 stars each interval
-      const newStars: Star[] = Array.from({ length: starCount }, (_, i) => {
+      const newStars: Star[] = Array.from({ length: starCount }, (_, i): Star => {
         return {
           id: Date.now() + Math.random(),
           
@@ -63,7 +64,7 @@ const ShootingStars = () => {
       });
       
       // --- UPDATE STAR MAP ---
-      setStars((prev) => { 
+      setStars((prev): Map<number, Star> => { 
         const newMap: Map<number, Star> = new Map<number, Star>(prev);
 
         newStars.forEach((star) => {
@@ -74,10 +75,11 @@ const ShootingStars = () => {
       });
       
       // --- STAR MAP CLEANUP ---
-      newStars.forEach((star) => {
+      newStars.forEach((star): void => {
         const timeoutId: ReturnType<typeof setTimeout> = setTimeout(() => {
+
           // Remove star from the map
-          setStars((prev) => { 
+          setStars((prev): Map<number, Star> => { 
             const newMap: Map<number, Star> = new Map<number, Star>(prev);
             newMap.delete(star.id)            
             return newMap;
@@ -92,7 +94,7 @@ const ShootingStars = () => {
       })
     }, spawnInterval);
 
-    return () => {
+    return (): void => {
       clearInterval(spawnStars);
       currentTimeouts.forEach((timeout) => {
         clearTimeout(timeout);
@@ -104,7 +106,7 @@ const ShootingStars = () => {
   return (
     <div className="stars-container">
       {
-        Array.from(stars.values()).map((star) => {
+        Array.from(stars.values()).map((star): ReactElement => {
           return (
             <div
               key={star.id}
