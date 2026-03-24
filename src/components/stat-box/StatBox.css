@@ -1,0 +1,44 @@
+.stat-box-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: var(--space-l);
+}
+
+.stat-item {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-value {
+  text-wrap: balance;
+  text-align: center;
+  color: var(--clr-primary);
+}
+
+.stat-desc {
+  text-wrap: balance;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .stat-box-container {
+    flex-direction: column; 
+    justify-content: space-evenly;
+    gap: var(--space-xl);
+  }
+
+  .stat-item {
+    align-items: flex-end; 
+  }
+
+  .stat-value {
+    text-align: right;
+  }
+
+  .stat-desc {
+    text-align: right;
+  }
+}
