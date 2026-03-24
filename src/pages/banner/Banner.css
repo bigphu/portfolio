@@ -1,23 +1,28 @@
+.banner-layout {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+.banner-content {
+  /* flex: 5; */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+@media (min-width: 768px) {
+  .banner-content {
+    width: 60%;
+  }
+}
+
 .gradient-title {
   display: inline-block;
-  
-  background-image: linear-gradient(
-    90deg, 
-    var(--clr-primary),
-    var(--clr-accent),
-    var(--clr-text), 
-    var(--clr-accent),
-    var(--clr-primary)
-  );
-
-  background-size: 200% auto;
-  
-  color: transparent;
-  -webkit-background-clip: text;
-  background-clip: text;
-  background-repeat: repeat;
-
-  animation: gradient-pan 6s linear infinite both;
 }
 
 @keyframes gradient-pan {
@@ -30,7 +35,7 @@
 }
 
 .gradient-title ~ span {
-  margin-left: 1.6rem;
+  margin-left: clamp(0rem, 2vw, 1.6rem);
 }
 
 .banner-description {
@@ -39,4 +44,18 @@
 
 .my-name {
   color: var(--clr-primary);
+}
+
+.banner-stat {
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  bottom: 10%;
+}
+
+@media (min-width: 768px) {
+  .banner-stat {
+    left: auto;
+    right: 1.5rem;
+  }
 }
