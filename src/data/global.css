@@ -1,16 +1,17 @@
 /* ==========================================================================
-   GLOBAL STYLESHEET 
+   GLOBAL STYLESHEET (Mobile-First Architecture)
    Table of Contents:
    1. Design Tokens (CSS Variables)
       - Base Colors
       - Semantic / State Colors
-      - Spacing & Layout
-      - Typography
+      - Spacing & Layout (Mobile Default)
+      - Typography (Mobile Default)
       - UI Components (Cards, Inputs, Buttons)
       - Shadows & Radius
    2. Modern CSS Reset
    3. Base Elements
    4. Utility Classes
+   5. Progressive Enhancement (min-width Breakpoints)
    ========================================================================== */
 
 :root {
@@ -28,7 +29,7 @@
   --frosted-blue-999: #020b0d;
 
   /* ----------------------------------------------------------------------
-     1A. BASE COLORS (Your Core Aesthetic)
+     1A. BASE COLORS
      ---------------------------------------------------------------------- */
   --clr-background: var(--frosted-blue-999);
   --clr-surface   : var(--frosted-blue-900);
@@ -38,110 +39,94 @@
   --clr-text      : var(--frosted-blue-50);
 
   /* ----------------------------------------------------------------------
-     1B. SEMANTIC & STATE COLORS (Mapped entirely to the base scale)
+     1B. SEMANTIC & STATE COLORS 
      ---------------------------------------------------------------------- */
-  /* Text States */
   --text-primary  : var(--clr-text);
-  --text-secondary: var(--frosted-blue-300); /* Muted down from 50 for subtitles */
-  --text-disabled : var(--frosted-blue-700); /* Pushed into the background */
-  --text-inverse  : var(--frosted-blue-999); /* Dark text for light backgrounds */
+  --text-secondary: var(--frosted-blue-300); 
+  --text-disabled : var(--frosted-blue-700); 
+  --text-inverse  : var(--frosted-blue-999); 
 
-  /* Action States */
-  --primary-hover : var(--frosted-blue-400); /* Lighter than primary (500) */
-  --primary-active: var(--frosted-blue-600); /* Darker than primary (500) */
-  --accent-hover  : var(--frosted-blue-100); /* Lighter than accent (200) */
-  --accent-active : var(--frosted-blue-300); /* Darker than accent (200) */
+  --primary-hover : var(--frosted-blue-400); 
+  --primary-active: var(--frosted-blue-600); 
+  --accent-hover  : var(--frosted-blue-100); 
+  --accent-active : var(--frosted-blue-300); 
   
-  /* Surface States (For alternating rows, active cards, etc.) */
-  --surface-alt   : var(--frosted-blue-950); /* Darker than surface (900) */
-  --surface-hover : var(--frosted-blue-800); /* Lighter than surface (900) */
-  --divider       : var(--frosted-blue-800); /* Subtle deep blue border */
+  --surface-alt   : var(--frosted-blue-950); 
+  --surface-hover : var(--frosted-blue-800); 
+  --divider       : var(--frosted-blue-800); 
 
-  /* Feedback / Badge Colors */
-  --state-success : #80C884; /* Left as raw hex: needs to stay green */
-  --state-warning : #ffc107; /* Left as raw hex: needs to stay yellow */
-  --state-error   : #FF4348; /* Left as raw hex: needs to stay red */
-  --state-info    : var(--frosted-blue-400); /* Mapped to the blue theme */
+  --state-success : #80C884; 
+  --state-warning : #ffc107; 
+  --state-error   : #FF4348; 
+  --state-info    : var(--frosted-blue-400); 
 
   /* ----------------------------------------------------------------------
-     1C. SPACING & LAYOUT
+     1C. SPACING & LAYOUT (Mobile Default - Tighter Values)
      ---------------------------------------------------------------------- */
   --space-xxs: 0.25rem;  /* 4px  */
   --space-xs : 0.5rem;   /* 8px  */
   --space-s  : 0.75rem;  /* 12px */
   --space-m  : 1rem;     /* 16px */
-  --space-l  : 1.25rem;  /* 20px */
-  --space-xl : 1.75rem;  /* 28px */
-  --space-xxl: 2.5rem;   /* 40px */
-  --space-3xl: 4rem;     /* 64px */
+  
+  --space-l  : 1rem;     /* Shrunk for mobile */
+  --space-xl : 1.25rem;  /* Shrunk for mobile */
+  --space-xxl: 1.5rem;   /* Shrunk for mobile */
+  --space-3xl: 2.5rem;   /* Shrunk for mobile */
 
   /* ----------------------------------------------------------------------
-     1D. TYPOGRAPHY 
+     1D. TYPOGRAPHY (Mobile Default)
      ---------------------------------------------------------------------- */
-  font-size: 100%; 
-
-  /* Font Families */
   --ff   : "Audiowide", sans-serif;
   --ffui : "JetBrains Mono", monospace;
 
-  --fs-h1: clamp(2.5rem, 5vw + 1rem, 4rem);
+  --fs-h1: clamp(2.25rem, 5vw + 1rem, 4rem);
   --fs-h2: clamp(2rem, 4vw + 1rem, 3rem);
   --fs-h3: clamp(1.5rem, 3vw + 0.5rem, 2.25rem);
   --fs-h4: clamp(1.25rem, 2vw + 0.5rem, 1.5rem);
   --fs-big: clamp(1.125rem, 1.5vw + 0.5rem, 1.25rem);
-  
-  /* Paragraphs shouldn't shrink below 1rem (16px) for readability */
   --fs-p: clamp(1rem, 1vw + 0.5rem, 1.125rem); 
   --fs-small: clamp(0.75rem, 0.8vw + 0.5rem, 0.875rem);
 
-  /* UI Specific Scale */
   --fs-h1ui: clamp(2rem, 4vw + 1rem, 3rem);
   --fs-h2ui: clamp(1.75rem, 3vw + 1rem, 2.25rem);
   --fs-h3ui: clamp(1.25rem, 2vw + 0.5rem, 1.5rem);
   --fs-h4ui: clamp(1rem, 1.5vw + 0.5rem, 1.12rem);
 
-  /* Titles (Audiowide) */
-  --h1   : bold var(--fs-h1)/1.1 var(--ff); 
-  --h2   : bold var(--fs-h2)/1.2 var(--ff); 
+  /* Tighter headings and looser paragraphs for small screens */
+  --h1   : bold var(--fs-h1)/1.05 var(--ff); 
+  --h2   : bold var(--fs-h2)/1.1 var(--ff); 
   --h3   : bold var(--fs-h3)/1.2 var(--ff); 
   --h4   : bold var(--fs-h4)/1.4 var(--ff); 
   --big  : var(--fs-big)/1.6 var(--ff); 
-  --p    : var(--fs-p)/1.6 var(--ff); 
+  --p    : var(--fs-p)/1.7 var(--ff); 
   --small: var(--fs-small)/1.8 var(--ff); 
 
-  /* UIs (JetBrains Mono) */
-  --h1ui   : bold var(--fs-h1ui)/1.2 var(--ffui); 
+  --h1ui   : bold var(--fs-h1ui)/1.1 var(--ffui); 
   --h2ui   : bold var(--fs-h2ui)/1.2 var(--ffui); 
   --h3ui   : bold var(--fs-h3ui)/1.3 var(--ffui); 
   --h4ui   : bold var(--fs-h4ui)/1.4 var(--ffui); 
   --bigui  : var(--fs-big)/1.6 var(--ffui); 
-  --pui    : var(--fs-p)/1.6 var(--ffui); 
+  --pui    : var(--fs-p)/1.7 var(--ffui); 
   --smallui: var(--fs-small)/1.8 var(--ffui);
 
   /* ----------------------------------------------------------------------
-     1E. UI COMPONENTS 
+     1E. UI COMPONENTS & RADIUS
      ---------------------------------------------------------------------- */
-  /* Cards */
   --card-bg      : var(--clr-surface);
   --card-border  : 1px solid var(--divider);
   --card-radius  : 8px;
 
-  /* Inputs / Forms */
   --input-bg           : var(--clr-background);
   --input-border       : var(--clr-border);
   --input-border-focus : var(--clr-accent);
   --input-text         : var(--text-primary);
   --input-placeholder  : var(--text-secondary);
 
-  /* Buttons */
   --btn-primary-bg   : var(--clr-primary);
   --btn-primary-text : var(--text-primary);
   --btn-accent-bg    : var(--clr-accent);
   --btn-accent-text  : var(--text-inverse);
 
-  /* ----------------------------------------------------------------------
-     1F. SHADOWS, RADIUS, & TRANSITIONS
-     ---------------------------------------------------------------------- */
   --radius-sm: 4px;
   --radius-md: 8px;
   --radius-lg: 12px;
@@ -149,8 +134,6 @@
 
   --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.2);
   --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.3);
-  
-  /* Modern CSS approach to add transparency to a variable for a glow */
   --shadow-glow: 0 0 10px color-mix(in srgb, var(--clr-accent) 20%, transparent);
 
   --transition-fast: 150ms ease-in-out;
@@ -162,7 +145,12 @@
    -------------------------------------------------------------------------- */
 *, *::before, *::after { box-sizing: border-box; }
 * { margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+
+html { 
+  scroll-behavior: smooth; 
+  /* Mobile Default: 1rem = 14px */
+  font-size: 87.5%; 
+}
 
 /* --------------------------------------------------------------------------
    3. BASE ELEMENTS
@@ -187,9 +175,7 @@ a {
   transition: color var(--transition-fast);
 }
 
-a:hover {
-  color: var(--accent-hover);
-}
+a:hover { color: var(--accent-hover); }
 
 img, svg {
   display: block;
@@ -203,24 +189,113 @@ button, input, textarea {
 }
 
 /* --------------------------------------------------------------------------
-   4. UTILITY CLASSES
+   4. UTILITY CLASSES (Mobile Defaults)
    -------------------------------------------------------------------------- */
 .full-screen-section {
-  height: 100svh;
-
+  min-height: 100svh;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
 .container {
-  width: 100%;
+  /* Smaller safe margins for phones */
+  width: min(100% - 2rem, 1200px);
+  margin-inline: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
 
-  max-width: 1200px;
+/* Mobile-first flex stack */
+.flex-responsive {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
 
-  margin-left : auto;
-  margin-right: auto;
+.gradient-text {
+  background-image: linear-gradient(
+    90deg, 
+    var(--clr-primary),
+    var(--clr-accent),
+    var(--clr-text), 
+    var(--clr-accent),
+    var(--clr-primary)
+  );
 
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+  background-size: 200% auto;
+  
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  background-repeat: repeat;
+
+  animation: gradient-pan 6s linear infinite both;
+}
+
+@keyframes gradient-pan {
+  0% {
+    background-position: 200% center;
+  }
+  100% {
+    background-position: 0% center;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   5. PROGRESSIVE ENHANCEMENT (min-width Breakpoints)
+   -------------------------------------------------------------------------- */
+
+/* --- TABLET & SMALL LAPTOP (≥ 768px) --- */
+@media (min-width: 768px) {
+  html {
+    /* Scale 1rem back up to 16px */
+    font-size: 100%; 
+  }
+
+  :root {
+    /* Restore breathing room to typography */
+    --h1: bold var(--fs-h1)/1.1 var(--ff); 
+    --h2: bold var(--fs-h2)/1.2 var(--ff);  
+    --h1ui: bold var(--fs-h1ui)/1.2 var(--ffui); 
+    --p: var(--fs-p)/1.6 var(--ff);    
+    --pui: var(--fs-p)/1.6 var(--ffui); 
+
+    /* Increase spacing variables */
+    --space-l  : 1.25rem;
+    --space-xl : 1.5rem;
+    --space-xxl: 2rem;
+    --space-3xl: 3rem;
+  }
+
+  .container {
+    /* Larger safe margins for bigger screens */
+    width: min(100% - 3rem, 1200px); 
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  /* Un-stack the flex columns into rows */
+  .flex-responsive {
+    flex-direction: row;
+    align-items: center; 
+  }
+}
+
+/* --- DESKTOP (≥ 1024px) --- */
+@media (min-width: 1024px) {
+  :root {
+    /* Full desktop spacing */
+    --space-xl : 1.75rem;
+    --space-xxl: 2.5rem;
+    --space-3xl: 4rem;
+  }
+}
+
+/* --- ULTRAWIDE DESKTOPS (≥ 1440px) --- */
+@media (min-width: 1440px) {
+  :root {
+    /* Massive spacing for massive monitors */
+    --space-3xl: 5rem;
+  }
 }
