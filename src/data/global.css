@@ -84,23 +84,39 @@
   --ff   : "Audiowide", sans-serif;
   --ffui : "JetBrains Mono", monospace;
 
+  --fs-h1: clamp(2.5rem, 5vw + 1rem, 4rem);
+  --fs-h2: clamp(2rem, 4vw + 1rem, 3rem);
+  --fs-h3: clamp(1.5rem, 3vw + 0.5rem, 2.25rem);
+  --fs-h4: clamp(1.25rem, 2vw + 0.5rem, 1.5rem);
+  --fs-big: clamp(1.125rem, 1.5vw + 0.5rem, 1.25rem);
+  
+  /* Paragraphs shouldn't shrink below 1rem (16px) for readability */
+  --fs-p: clamp(1rem, 1vw + 0.5rem, 1.125rem); 
+  --fs-small: clamp(0.75rem, 0.8vw + 0.5rem, 0.875rem);
+
+  /* UI Specific Scale */
+  --fs-h1ui: clamp(2rem, 4vw + 1rem, 3rem);
+  --fs-h2ui: clamp(1.75rem, 3vw + 1rem, 2.25rem);
+  --fs-h3ui: clamp(1.25rem, 2vw + 0.5rem, 1.5rem);
+  --fs-h4ui: clamp(1rem, 1.5vw + 0.5rem, 1.12rem);
+
   /* Titles (Audiowide) */
-  --h1   : bold 4rem/1em var(--ff); 
-  --h2   : bold 3rem/1.2em var(--ff); 
-  --h3   : bold 2.25rem/1.2em var(--ff); 
-  --h4   : bold 1.5rem/1.6em var(--ff); 
-  --big  : 1.25rem/1.6em var(--ff); 
-  --p    : 1rem/1.6em var(--ff); 
-  --small: 0.75rem/2em var(--ff); 
+  --h1   : bold var(--fs-h1)/1.1 var(--ff); 
+  --h2   : bold var(--fs-h2)/1.2 var(--ff); 
+  --h3   : bold var(--fs-h3)/1.2 var(--ff); 
+  --h4   : bold var(--fs-h4)/1.4 var(--ff); 
+  --big  : var(--fs-big)/1.6 var(--ff); 
+  --p    : var(--fs-p)/1.6 var(--ff); 
+  --small: var(--fs-small)/1.8 var(--ff); 
 
   /* UIs (JetBrains Mono) */
-  --h1ui   : bold 3rem/1.2em var(--ffui); 
-  --h2ui   : bold 2.25rem/1.2em var(--ffui); 
-  --h3ui   : bold 1.5rem/1.2em var(--ffui); 
-  --h4ui   : bold 1.12rem/1.6em var(--ffui); 
-  --bigui  : 1rem/1.6em var(--ffui); 
-  --pui    : 0.8rem/1.6em var(--ffui); 
-  --smallui: 0.75rem/1.8em var(--ffui); 
+  --h1ui   : bold var(--fs-h1ui)/1.2 var(--ffui); 
+  --h2ui   : bold var(--fs-h2ui)/1.2 var(--ffui); 
+  --h3ui   : bold var(--fs-h3ui)/1.3 var(--ffui); 
+  --h4ui   : bold var(--fs-h4ui)/1.4 var(--ffui); 
+  --bigui  : var(--fs-big)/1.6 var(--ffui); 
+  --pui    : var(--fs-p)/1.6 var(--ffui); 
+  --smallui: var(--fs-small)/1.8 var(--ffui);
 
   /* ----------------------------------------------------------------------
      1E. UI COMPONENTS 
@@ -189,21 +205,22 @@ button, input, textarea {
 /* --------------------------------------------------------------------------
    4. UTILITY CLASSES
    -------------------------------------------------------------------------- */
-/* .grid {
-  display: grid;
-  gap: var(--space-xl);
+.full-screen-section {
+  height: 100svh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.card {
-  background-color: var(--card-bg);
-  border: var(--card-border);
-  border-radius: var(--card-radius);
-  padding: var(--space-l);
-  box-shadow: var(--shadow-sm);
-}
+.container {
+  width: 100%;
 
-.markdown-text ul {
-  padding-left: var(--space-l);
-  margin-top: var(--space-xs);
-  list-style-type: disc;
-} */
+  max-width: 1200px;
+
+  margin-left : auto;
+  margin-right: auto;
+
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}

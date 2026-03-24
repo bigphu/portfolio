@@ -1,0 +1,42 @@
+.gradient-title {
+  display: inline-block;
+  
+  background-image: linear-gradient(
+    90deg, 
+    var(--clr-primary),
+    var(--clr-accent),
+    var(--clr-text), 
+    var(--clr-accent),
+    var(--clr-primary)
+  );
+
+  background-size: 200% auto;
+  
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  background-repeat: repeat;
+
+  animation: gradient-pan 6s linear infinite both;
+}
+
+@keyframes gradient-pan {
+  0% {
+    background-position: 200% center;
+  }
+  100% {
+    background-position: 0% center;
+  }
+}
+
+.gradient-title ~ span {
+  margin-left: 1.6rem;
+}
+
+.banner-description {
+  margin-top: 1.5rem;
+}
+
+.my-name {
+  color: var(--clr-primary);
+}

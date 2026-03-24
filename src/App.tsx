@@ -4,6 +4,8 @@ import type { JSX } from "react";
 import "@/data/global.css"; 
 import { Preloader } from "@/components";
 import { ShootingStars } from "@/components"; 
+import { Banner } from "@/pages";
+
 
 const App = (): JSX.Element => {
   return (
@@ -16,6 +18,7 @@ const App = (): JSX.Element => {
             <Route path="/" element={<Home/>}/>
           </Routes> */}
           <Preloader />
+          <Banner/>
         </main>
 
       </div>

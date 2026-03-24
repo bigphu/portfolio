@@ -15,7 +15,7 @@
   position: fixed;
   inset: 0;
   display: flex;
-  /* animation: hide-preloader 0.1s linear var(--preloader-delay) forwards; */
+  animation: hide-preloader 0.1s linear var(--preloader-delay) forwards;
 }
 
 .curtain-col {
@@ -37,7 +37,7 @@
 }
 
 .letter {
-  color: var(--text);
+  color: white;
   font: var(--h1);
   font-size: clamp(3.5rem, 12vw, 12rem);
   line-height: 1.2em;
@@ -48,8 +48,7 @@
 @keyframes hide-preloader {
   100% {
     opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
+    display: none;
   }
 }
 
