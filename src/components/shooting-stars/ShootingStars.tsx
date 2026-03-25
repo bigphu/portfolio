@@ -11,8 +11,8 @@ interface Star {
   duration: number;
 }
 
-const minStarCount: number = 1;
-const maxStarCount: number = 4;
+const minStarCount: number = 3;
+const maxStarCount: number = 6;
 
 const spawnInterval: number = 1200; // (ms)
 
@@ -22,8 +22,8 @@ const maxSpawnX: number = 80; // (vw)
 const minSpawnY: number = -20; // (vh)
 const maxSpawnY: number = 80; // (vh)
 
-const minTrailLen: number = 120; // (px)
-const maxTrailLen: number = 180; // (px)
+const minTrailLen: number = 180; // (px)
+const maxTrailLen: number = 240; // (px)
 
 const minTravelDist: number = 800; // (px)
 const maxTravelDist: number = 1400; // (px)
