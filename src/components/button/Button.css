@@ -1,0 +1,217 @@
+.generic-btn {
+  position: relative;  
+  display: inline-flex;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+}
+
+.btn-surface {  
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  
+  padding: var(--space-l) var(--space-xxl); 
+  font: bold var(--fs-p) var(--ff); 
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  
+  border: none;
+  border-radius: 0;
+  
+  transition: transform 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Attached to the STATIONARY wrapper */
+/* Button lower part */
+.generic-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1; 
+  border-radius: inherit; 
+  
+  transform: translateY(0.5rem); 
+}
+
+/* Attached to the STATIONARY wrapper */
+/* Button ring */
+.generic-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  border-radius: inherit;
+  
+  outline: 0.125rem solid;
+  outline-offset: 0.5rem;
+  
+  scale: 0.6;
+  opacity: 0; 
+  pointer-events: none; 
+  
+  transform: translateY(0.5rem);
+
+  transition: scale 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.generic-btn:hover:not(:disabled)::after {
+  scale: 1;
+  opacity: 0.5;
+}
+
+.generic-btn:active:not(:disabled) .btn-surface {
+  transform: translateY(0.5rem); 
+}
+
+.btn-text {
+  transition: opacity 0.2s ease;
+}
+
+/* ==========================================================================
+   VARIANTS
+   ========================================================================== */
+
+/* --- VARIANTS --- */
+
+/* Surface colors target the child span */
+.btn-primary .btn-surface {
+  background-color: var(--btn-primary-bg);
+  color: var(--btn-primary-text); 
+}
+
+.btn-primary:active:not(:disabled) .btn-surface {
+  background-color: var(--clr-primary);
+}
+
+.btn-primary::before {
+  background-color: var(--clr-primary); 
+}
+
+.btn-primary::after {
+  outline-color: var(--clr-text); 
+}
+
+/* --- SECONDARY VARIANT --- */
+.btn-secondary .btn-surface {
+  background-color: var(--btn-secondary-bg);
+
+  outline: 0.125rem solid var(--btn-secondary-text);
+  outline-offset: -0.125rem;
+  
+  color: var(--btn-secondary-text); 
+}
+
+.btn-secondary:active:not(:disabled) .btn-surface {
+  outline-color: var(--clr-primary);
+  outline-offset: -0.125rem;
+
+  color: var(--clr-primary); 
+}
+
+.btn-secondary::before {
+  background-color: var(--btn-secondary-bg);
+
+  outline: 0.125rem solid var(--clr-primary);
+  outline-offset: -0.125rem;
+}
+
+.btn-secondary::after {
+  outline-color: var(--clr-text); 
+}
+
+/* --- DANGER VARIANT --- */
+.btn-danger .btn-surface {
+  background-color: var(--btn-danger-bg);
+  color: var(--btn-danger-text); 
+}
+
+.btn-danger:active:not(:disabled) .btn-surface {
+  background-color: var(--btn-secondary-bg);
+
+  outline: 0.125rem solid var(--clr-danger);
+  outline-offset: -0.125rem;
+
+  color: var(--clr-danger);
+}
+
+.btn-danger::before {
+  background-color: var(--btn-secondary-bg);
+
+  outline: 0.125rem solid var(--clr-danger);
+  outline-offset: -0.125rem;
+}
+
+.btn-danger::after {
+  outline-color: var(--clr-danger);
+}
+
+/* ==========================================================================
+   STATES
+   ========================================================================== */
+
+
+
+.generic-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.55; 
+}
+
+.generic-btn:disabled::after {
+  display: none; 
+}
+
+.generic-btn.is-loading:disabled {
+  cursor: wait;
+  opacity: 1; 
+}
+
+/* ==========================================================================
+   LOADING STATE (DOTS)
+   ========================================================================== */
+
+.is-loading .btn-text {
+  opacity: 0;
+}
+
+.loading-dots {
+  position: absolute;
+  inset: 0;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;         /* Space between each dot */
+  font-size: 2em;    /* Scale up the middle dots slightly */
+  line-height: 0;      /* Prevents the larger font size from shifting the text */
+}
+
+/* Base state for all dots */
+.loading-dots span {
+  opacity: 0.3;
+  animation: flash-dot 1.25s infinite ease-in-out;
+}
+
+.loading-dots span:nth-child(1) { animation-delay: 0.00s; }
+.loading-dots span:nth-child(2) { animation-delay: 0.25s; }
+.loading-dots span:nth-child(3) { animation-delay: 0.50s; }
+.loading-dots span:nth-child(4) { animation-delay: 0.75s; }
+.loading-dots span:nth-child(5) { animation-delay: 1.00s; }
+
+@keyframes flash-dot {
+  0%, 50%, 100% { 
+    opacity: 0.3; 
+    text-shadow: none;
+  }
+  40% { 
+    opacity: 1; 
+  }
+}
+
+.generic-btn.is-loading:disabled {
+  cursor: wait;
+}
