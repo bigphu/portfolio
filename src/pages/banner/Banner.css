@@ -39,7 +39,7 @@
 }
 
 .banner-description {
-  margin-top: 1.5rem;
+  margin-top: 2rem;
 }
 
 .my-name {
@@ -58,4 +58,12 @@
     left: auto;
     right: 1.5rem;
   }
+}
+
+.banner-buttons {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 2rem;
 }

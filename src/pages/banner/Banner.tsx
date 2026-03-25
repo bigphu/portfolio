@@ -1,5 +1,5 @@
 import type { JSX } from "react";
-import { StatBox } from "@/components";
+import { StatBox, Button } from "@/components";
 import "./Banner.css";
 
 const Banner = (): JSX.Element => {
@@ -24,11 +24,16 @@ const Banner = (): JSX.Element => {
               has been through building scalable and
               responsive web projects.
           </p>
+
+          <div className="banner-buttons">
+            <Button variant="primary">Contact me</Button>
+          </div>
         </div>
 
         <div className="banner-stat">
           <StatBox items={ [{ desc: "CGPA", stat: "3.5" }, { desc: "IETLS", stat: "7.5" }] }/>
         </div>
+
       </div>
     </section>
   )

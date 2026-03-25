@@ -37,6 +37,8 @@
   --clr-accent    : var(--frosted-blue-200);
   --clr-border    : var(--frosted-blue-600);
   --clr-text      : var(--frosted-blue-50);
+  --clr-danger    : var(--state-error);
+  --clr-disabled  : var(--text-disabled);
 
   /* ----------------------------------------------------------------------
      1B. SEMANTIC & STATE COLORS 
@@ -122,10 +124,24 @@
   --input-text         : var(--text-primary);
   --input-placeholder  : var(--text-secondary);
 
-  --btn-primary-bg   : var(--clr-primary);
-  --btn-primary-text : var(--text-primary);
-  --btn-accent-bg    : var(--clr-accent);
-  --btn-accent-text  : var(--text-inverse);
+  /* Buttons: Primary & Secondary */
+  --btn-primary-bg    : var(--frosted-blue-50);
+  --btn-primary-text  : var(--text-inverse);
+  
+  --btn-secondary-bg  : var(--clr-background);
+  --btn-secondary-text: var(--clr-text);
+  
+  /* Buttons: Danger (Mapped to Semantic Danger) */
+  --btn-danger-bg     : var(--clr-danger);
+  --btn-danger-text   : #ffffff; /* Pure white ensures high contrast on red */
+
+  /* Buttons: Disabled (Mapped to Muted Theme Colors) */
+  --btn-disabled-bg     : var(--clr-surface);     /* Recedes into the surface */
+  --btn-disabled-text   : var(--clr-disabled);    /* Uses semantic disabled text */
+  --btn-disabled-shadow : var(--surface-alt);     /* Darker shadow to look "pressed in" */
+
+  --btn-accent-bg     : var(--clr-accent);
+  --btn-accent-text   : var(--text-inverse);
 
   --radius-sm: 4px;
   --radius-md: 8px;
@@ -226,7 +242,7 @@ button, input, textarea {
   background-size: 200% auto;
   
   color: transparent;
-  -webkit-background-clip: text;
+  /* -webkit-background-clip: text; */
   background-clip: text;
   background-repeat: repeat;
 
