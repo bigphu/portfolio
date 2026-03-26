@@ -4,7 +4,7 @@ import type { JSX } from "react";
 import "@/data/global.css"; 
 import { Preloader } from "@/components";
 import { ShootingStars } from "@/components"; 
-import { Banner } from "@/pages";
+import { Banner, Skills } from "@/pages";
 
 
 const App = (): JSX.Element => {
@@ -19,6 +19,7 @@ const App = (): JSX.Element => {
           </Routes> */}
           <Preloader />
           <Banner/>
+          <Skills/>
         </main>
 
       </div>
