@@ -1,8 +1,12 @@
 import type { JSX } from "react";
 import { StatBox, Button } from "@/components";
+import { useSendEmail, useOpenGithub } from "@/hooks";
 import "./Banner.css";
 
 const Banner = (): JSX.Element => {
+  const sendEmail: CallableFunction = useSendEmail(atob("Z2lhcGh1LnBoYW0uZGV2QGdtYWlsLmNvbQ=="));
+  const openGithub: CallableFunction = useOpenGithub("bigphu");
+
   return (
     <section className="full-screen-section">
       <div className="container banner-layout">
@@ -26,7 +30,12 @@ const Banner = (): JSX.Element => {
           </p>
 
           <div className="banner-buttons">
-            <Button variant="primary">Contact me</Button>
+            <Button variant="primary" onClick={() => sendEmail("Reaching out from your portfolio!", "Hi there, I saw your website and wanted to chat about...")}>
+              Contact me
+            </Button>
+            <Button variant="secondary" onClick={() => openGithub()}>
+              View Github
+            </Button>
           </div>
         </div>
 
