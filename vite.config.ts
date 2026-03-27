@@ -3,12 +3,11 @@ import react, { reactCompilerPreset } from "@vitejs/plugin-react";
 import babel from "@rolldown/plugin-babel";
 import path from "path";
 
+import { cloudflare } from "@cloudflare/vite-plugin";
+
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [
-    react(),
-    babel({ presets: [reactCompilerPreset()] })
-  ],
+  plugins: [react(), babel({ presets: [reactCompilerPreset()] }), cloudflare()],
   server: {
     // Allows any host (useful for ngrok/tunneling)
     allowedHosts: true, 
