@@ -67,11 +67,15 @@ const Projects = (): JSX.Element => {
               >
                 
                 {/* MOBILE: Inline Image */}
-                <img 
-                  src={project.thumbnail} 
-                  alt={`${project.title} thumbnail`} 
-                  className="project-image-mobile" 
-                />
+                {
+                  project.thumbnail && (
+                    <img 
+                      src={project.thumbnail} 
+                      alt={`${project.title} preview`} 
+                      className="project-image-mobile" 
+                    />
+                  )
+                }
 
                 <div className="project-info-wrapper">
                   {/* INDEX NUMBER (e.g., 01.) */}
