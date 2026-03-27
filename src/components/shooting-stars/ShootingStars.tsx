@@ -50,7 +50,7 @@ const ShootingStars = (): JSX.Element => {
       const starCount: number = Math.floor(Math.random() * offsetCount) + minStarCount;
 
       // Spawn from 1 to 5 stars each interval
-      const newStars: Star[] = Array.from({ length: starCount }, (_, i): Star => {
+      const newStars: Star[] = Array.from({ length: starCount }, (): Star => {
         return {
           id: Date.now() + Math.random(),
           

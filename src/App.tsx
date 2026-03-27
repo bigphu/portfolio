@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import { BrowserRouter as Router, Route} from "react-router-dom";
 import type { JSX } from "react";
 
 import "@/data/global.css"; 
@@ -13,14 +13,13 @@ const App = (): JSX.Element => {
         <ShootingStars />
 
         <main>
-          {/* <Routes>
-            <Route path="/" element={<Home/>}/>
-          </Routes> */}
           <Preloader/>
           <ScrollIndicator/>
-          <Banner/>
-          <Skills/>
-          <Projects/>
+          <Route path="/">
+            <Banner/>
+            <Skills/>
+            <Projects/>
+          </Route>/
         </main>
 
       </div>
