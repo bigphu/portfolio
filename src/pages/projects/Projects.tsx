@@ -39,8 +39,7 @@ const Projects = (): JSX.Element => {
         <div className="projects-list">
           {
             PROJECTS.map((project, index) => (
-              <a 
-                href={`/projects/${project.slug}`} 
+              <a  
                 className="project-item" 
                 key={project.slug}
               >
