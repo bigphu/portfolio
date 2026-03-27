@@ -1,10 +1,9 @@
-import { BrowserRouter as Router, Route} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import type { JSX } from "react";
 
 import "@/data/global.css"; 
 import { Preloader, ShootingStars, ScrollIndicator } from "@/components"; 
 import { Banner, Skills, Projects } from "@/pages";
-
 
 const App = (): JSX.Element => {
   return (
@@ -13,18 +12,26 @@ const App = (): JSX.Element => {
         <ShootingStars />
 
         <main>
-          <Preloader/>
-          <ScrollIndicator/>
-          <Route path="/">
-            <Banner/>
-            <Skills/>
-            <Projects/>
-          </Route>/
+          <Preloader />
+          <ScrollIndicator />
+          
+          <Routes>
+            <Route 
+              path="/" 
+              element={
+                <>
+                  <Banner />
+                  <Skills />
+                  <Projects />
+                </>
+              } 
+            />
+          </Routes>
         </main>
 
       </div>
     </Router>
-  )
-}
+  );
+};
 
 export default App;
