@@ -2,9 +2,8 @@ import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import type { JSX } from "react";
 
 import "@/data/global.css"; 
-import { Preloader } from "@/components";
-import { ShootingStars } from "@/components"; 
-import { Banner, Skills } from "@/pages";
+import { Preloader, ShootingStars, ScrollIndicator } from "@/components"; 
+import { Banner, Skills, Projects } from "@/pages";
 
 
 const App = (): JSX.Element => {
@@ -17,9 +16,11 @@ const App = (): JSX.Element => {
           {/* <Routes>
             <Route path="/" element={<Home/>}/>
           </Routes> */}
-          <Preloader />
+          <Preloader/>
+          <ScrollIndicator/>
           <Banner/>
           <Skills/>
+          <Projects/>
         </main>
 
       </div>

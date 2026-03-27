@@ -36,7 +36,8 @@
   --clr-primary   : var(--frosted-blue-500);
   --clr-accent    : var(--frosted-blue-200);
   --clr-border    : var(--frosted-blue-800);
-  --clr-text      : var(--frosted-blue-50);
+  /* --clr-text      : var(--frosted-blue-50); */
+  --clr-text      : white;
   --clr-danger    : var(--state-error);
   --clr-disabled  : var(--text-disabled);
 
@@ -168,12 +169,21 @@ html {
   font-size: 87.5%; 
 }
 
+html {
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox, Safari 18.2+, Chromium 121+ */
+}
+
+::-webkit-scrollbar { 
+  display: none;  /* Older Safari and Chromium */
+}
+
 /* --------------------------------------------------------------------------
    3. BASE ELEMENTS
    -------------------------------------------------------------------------- */
 body {
   background-color: var(--clr-background);
-  color: var(--text-primary);
+  color: var(--clr-text);
   font: var(--pui); 
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;

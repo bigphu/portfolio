@@ -1,7 +1,7 @@
 import type { JSX } from "react";
 import { StatBox, Button } from "@/components";
 import { useSendEmail, useOpenGithub } from "@/hooks";
-import "./Banner.css";
+import "./Banner.css"; 
 
 const Banner = (): JSX.Element => {
   const sendEmail: CallableFunction = useSendEmail(atob("Z2lhcGh1LnBoYW0uZGV2QGdtYWlsLmNvbQ=="));
@@ -12,7 +12,7 @@ const Banner = (): JSX.Element => {
       <div className="container banner-layout">
         <div className="banner-content">
           <h1>
-            <span className="gradient-title gradient-text">FRONTEND</span>
+            <span className="gradient-title gradient-text">SOFTWARE</span>
             <br></br>
             <span className="developer">DEVELOPER</span>
           </h1>
@@ -24,7 +24,7 @@ const Banner = (): JSX.Element => {
               </span>
               . 
               <br></br>
-              An undergraduate Frontend Developer that 
+              An undergraduate Software Developer that 
               has been through building scalable and
               responsive web projects.
           </p>
@@ -40,7 +40,7 @@ const Banner = (): JSX.Element => {
         </div>
 
         <div className="banner-stat">
-          <StatBox items={ [{ desc: "CGPA", stat: "3.5" }, { desc: "IETLS", stat: "7.5" }] }/>
+          <StatBox items={ [{ desc: "Education - Undergraduate", stat: "src/assets/logo-bk.png"}, { desc: "Cumulative GPA", stat: "3.5" }, { desc: "IETLS - Overall", stat: "7.5" }] }/>
         </div>
 
       </div>

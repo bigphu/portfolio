@@ -20,7 +20,7 @@ const Button = ({
       disabled={loading || props.disabled}
       {...props}
     >
-      <span className="btn-surface">
+      <div className="btn-surface">
         {
           loading && (
             <span className="loading-dots" aria-hidden="true">
@@ -32,10 +32,10 @@ const Button = ({
             </span>
           )
         }
-        <span className="btn-text">
+        <p className="btn-text">
           {children}
-        </span>
-      </span>
+        </p>
+      </div>
     </button>
   );
 };

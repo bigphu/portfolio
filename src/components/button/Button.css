@@ -18,7 +18,6 @@
   flex: 1;
   
   padding: var(--space-l) var(--space-xxl); 
-  font: bold var(--fs-p) var(--ff); 
   text-transform: uppercase;
   letter-spacing: 0.05em;
   
@@ -72,6 +71,8 @@
 }
 
 .btn-text {
+  font: bold var(--fs-p) var(--ff); 
+  margin: 0;
   transition: opacity 0.2s ease;
 }
 

@@ -11,6 +11,8 @@ interface StatBoxProps {
 }
 
 const StatBox = ({ items }: StatBoxProps): JSX.Element => {
+  const isImage = (path: string) => /\.(png|jpe?g|svg|gif|webp)$/i.test(path);
+
   return (
     <div className="stat-box-container">
       {
@@ -20,9 +22,16 @@ const StatBox = ({ items }: StatBoxProps): JSX.Element => {
               key={`key-${index}`} 
               className="stat-item"
             >
-              <h2 className="stat-value">
-                {item.stat}
-              </h2>
+
+              {
+                isImage(item.stat) ? (
+                  <img className="stat-img" src={`${item.stat}`} alt={`${item.desc}`}/>
+                ) : (
+                  <h2 className="stat-value">
+                    {item.stat}
+                  </h2>
+                )
+              }
               <p className="stat-desc">
                 {item.desc}
               </p>

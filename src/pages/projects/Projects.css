@@ -1,0 +1,182 @@
+.projects-section {
+  padding: var(--space-3xl) 0;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.projects-header {
+  margin-bottom: var(--space-3xl);
+}
+
+/* --- THE LIST CONTAINER --- */
+.projects-list {
+  display: flex;
+  flex-direction: column;
+}
+
+/* MODERN CSS MAGIC: If the list is being hovered, dim ALL items to 30%... */
+.projects-list:hover .project-item {
+  opacity: 0.3;
+}
+
+/* ...but force the SPECIFIC item being hovered back to 100%! */
+.projects-list .project-item:hover {
+  opacity: 1;
+}
+
+/* --- INDIVIDUAL PROJECT ITEM --- */
+.project-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-xl) 0;
+  border-bottom: 1px solid var(--clr-border);
+  transition: opacity 0.4s ease;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* Remove border from last item */
+.project-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+.project-item:first-child {
+  padding-top: 0;
+}
+
+.project-info-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media (min-width: 768px) {
+  .project-info-wrapper {
+    justify-content: flex-start;
+    gap: var(--space-m)
+  }
+}
+
+.project {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* --- TYPOGRAPHY --- */
+.project-index {
+  /* font: var(--h4); */
+  color: var(--clr-accent);
+  line-height: 1;
+}
+
+.project-title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-s);
+  color: var(--clr-text);
+  margin-bottom: var(--space-s);
+  text-transform: uppercase;
+  transition: color var(--transition-fast);
+}
+
+.project-item:hover .project-title {
+  color: var(--clr-primary);
+}
+
+/* --- TECH STACK (Dots separated) --- */
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-s);
+  font: var(--smallui);
+  color: var(--clr-text);
+}
+
+.tech-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--clr-border);
+}
+
+/* --- IMAGES (Mobile Inline vs Desktop Hover) --- */
+.project-image-mobile {
+  width: 100%;
+  aspect-ratio: 3/2;
+  object-fit: cover;
+  object-position: top;
+  margin-bottom: var(--space-l);
+  border-radius: var(--radius-md);
+}
+
+.project-image-desktop {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .project-image-mobile {
+    display: none; /* Hide inline image on desktop */
+  }
+
+  .project-image-desktop {
+    display: block;
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    
+    /* Center it vertically and shrink it slightly by default */
+    transform: translateY(-50%) scale(0.9);
+    
+    width: 300px;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+    
+    /* Invisible and unclickable by default */
+    opacity: 0;
+    pointer-events: none;
+    z-index: 10;
+    box-shadow: var(--shadow-md);
+    
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* When hovering the list item, reveal and pop the image forward! */
+  .project-item:hover .project-image-desktop {
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
+  }
+}
+
+/* --- EXTERNAL LINK ICON --- */
+.external-icon {
+  /* width: auto; */
+  height: 2rem;
+}
+
+.visit-btn {
+  flex: none;
+  aspect-ratio: 1/1;
+  scale: 0.5;
+}
+
+@media (min-width: 768px) {
+  .visit-btn {
+    flex: none;
+    aspect-ratio: 1/1;
+    scale: 0.4;
+    opacity: 0; 
+    transform: translateX(calc(-1 * var(--space-3xl)));
+    transition: all 0.3s ease;
+  }
+
+  .project-item:hover .visit-btn {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
