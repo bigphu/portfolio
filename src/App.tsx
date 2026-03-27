@@ -18,20 +18,21 @@ const App = () => {
           <Preloader/>
           <ScrollIndicator/>
           
-          <Suspense fallback={<div style={{ height: "100vh" }}>Loading...</div>}>
-            <Routes>
-              <Route 
-                path="/" 
-                element={
-                  <>
-                    <Banner/>
-                    <Skills/>
-                    <Projects/>
-                  </>
-                } 
-             />
-            </Routes>
-          </Suspense>
+          <Routes>
+            <Route 
+              path="/" 
+              element={
+                <>
+                  <Banner /> 
+                  
+                  <Suspense fallback={null}>
+                    <Skills />
+                    <Projects />
+                  </Suspense>
+                </>
+              } 
+            />
+          </Routes>
         </main>
       </div>
     </Router>
