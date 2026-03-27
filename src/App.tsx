@@ -1,34 +1,38 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import type { JSX } from "react";
+import { Suspense, lazy } from "react";
 
 import "@/data/global.css"; 
 import { Preloader, ShootingStars, ScrollIndicator } from "@/components"; 
-import { Banner, Skills, Projects } from "@/pages";
 
-const App = (): JSX.Element => {
+const Banner = lazy(() => import("@/pages/banner/Banner"));
+const Skills = lazy(() => import("@/pages/skills/Skills"));
+const Projects = lazy(() => import("@/pages/projects/Projects"));
+
+const App = () => {
   return (
     <Router>
       <div className="app-container">
-        <ShootingStars />
+        <ShootingStars/>
 
         <main>
-          <Preloader />
-          <ScrollIndicator />
+          <Preloader/>
+          <ScrollIndicator/>
           
-          <Routes>
-            <Route 
-              path="/" 
-              element={
-                <>
-                  <Banner />
-                  <Skills />
-                  <Projects />
-                </>
-              } 
-            />
-          </Routes>
+          <Suspense fallback={<div style={{ height: "100vh" }}>Loading...</div>}>
+            <Routes>
+              <Route 
+                path="/" 
+                element={
+                  <>
+                    <Banner/>
+                    <Skills/>
+                    <Projects/>
+                  </>
+                } 
+             />
+            </Routes>
+          </Suspense>
         </main>
-
       </div>
     </Router>
   );

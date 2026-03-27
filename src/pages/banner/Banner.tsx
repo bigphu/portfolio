@@ -1,6 +1,7 @@
 import type { JSX } from "react";
 import { StatBox, Button } from "@/components";
 import { useSendEmail, useOpenGithub } from "@/hooks";
+import bkLogo from "@/assets/logo-bk.png"; 
 import "./Banner.css"; 
 
 const Banner = (): JSX.Element => {
@@ -40,7 +41,7 @@ const Banner = (): JSX.Element => {
         </div>
 
         <div className="banner-stat">
-          <StatBox items={ [{ desc: "Education - Undergraduate", stat: "src/assets/logo-bk.png"}, { desc: "Cumulative GPA", stat: "3.5" }, { desc: "IETLS - Overall", stat: "7.5" }] }/>
+          <StatBox items={ [{ desc: "Education - Undergraduate", stat: bkLogo}, { desc: "Cumulative GPA", stat: "3.5" }, { desc: "IETLS - Overall", stat: "7.5" }] }/>
         </div>
 
       </div>

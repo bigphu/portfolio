@@ -1,31 +1,48 @@
 import React from "react";
 import type { JSX } from "react";
 import { Button } from "@/components"
+import { useOpenGithub } from "@/hooks";
 import "./Projects.css";
+import golfClubThumbnail from "@/assets/golf-club-homepage.png";
+import studyBuddyThumbnail from "@/assets/study-buddy-dashboard.png";
+import quickBuyThumbnail from "@/assets/quickbuy-homepage.png";
 
-// MOCK DATA (Will replace with your API data later)
-const PROJECTS = [
+// MOCK DATA (Will replace with API data later (maybe))
+const projects = [
   {
-    slug: "tyc-compiler",
-    title: "TyC-Compiler",
-    techStack: ["C", "C++", "Compiler Design", "ANTLR"],
-    thumbnail: "https://via.placeholder.com/400x500/001c24/00c8ff?text=TyC+Compiler"
+    slug: "golf-club",
+    title: "Golf Club Manager",
+    techStack: ["ReactJS", "ExpressJS", "TailwindCSS", "Docker"],
+    thumbnail: golfClubThumbnail
   },
   {
     slug: "study-buddy",
     title: "Study Buddy",
-    techStack: ["ReactJS", "ExpressJS", "Node.js", "MySQL"],
-    thumbnail: "https://via.placeholder.com/400x500/001c24/00c8ff?text=Study+Buddy"
+    techStack: ["ReactJS", "ExpressJS", "TailwindCSS", "MySQL"],
+    thumbnail: studyBuddyThumbnail
   },
   {
-    slug: "quickbuy",
+    slug: "quick-buy",
     title: "QuickBuy",
-    techStack: ["JavaScript", "ReactJS", "CSS", "API"],
-    thumbnail: "https://via.placeholder.com/400x500/001c24/00c8ff?text=QuickBuy"
+    techStack: ["ReactJS", "ExpressJS", "TailwindCSS", "MySQL"],
+    thumbnail: quickBuyThumbnail
+  },
+  {
+    slug: "tyc-compiler",
+    title: "TyC Compiler",
+    techStack: ["Python", "Compiler Design", "ANTLR"],
+  },
+  {
+    slug: "3d-ascii-renderer",
+    title: "3D ASCII Renderer",
+    techStack: ["C++", "Graphics Programming"]
   }
 ];
 
 const Projects = (): JSX.Element => {
+  const githubUsername = "bigphu";
+  const openGithub = useOpenGithub("bigphu");
+
   return (
     <section id="projects" className="projects-section">
       <div className="container">
@@ -38,8 +55,13 @@ const Projects = (): JSX.Element => {
 
         <div className="projects-list">
           {
-            PROJECTS.map((project, index) => (
-              <a  
+            projects.map((project, index) => (
+              <a
+                href={`https://github.com/${githubUsername}/${project.slug}`} 
+                onClick={(e) => {
+                  e.preventDefault(); // Prevent default link navigation
+                  openGithub(project.slug);
+                }}
                 className="project-item" 
                 key={project.slug}
               >
@@ -66,7 +88,7 @@ const Projects = (): JSX.Element => {
                     {/* TECH STACK LIST */}
                     <div className="project-tech">
                       {
-                        project.techStack.slice(0, 3).map((tech, idx, arr) => (
+                        project.techStack.slice(0, 4).map((tech, idx, arr) => (
                           <React.Fragment key={tech}>
                             <span>{tech}</span>
                             {/* Renders the dot separator, except after the last item */}
@@ -81,6 +103,9 @@ const Projects = (): JSX.Element => {
                     <Button 
                       variant="secondary"
                       className="visit-btn"
+                      onClick={
+                        () => openGithub(`${project.slug}`)
+                      }
                     >
                       <svg
                         className="external-icon"
@@ -100,12 +125,15 @@ const Projects = (): JSX.Element => {
                 </div>
 
                 {/* DESKTOP: Hover Revealed Floating Image */}
-                <img 
-                  src={project.thumbnail} 
-                  alt={`${project.title} preview`} 
-                  className="project-image-desktop" 
-                />
-                
+                {
+                  project.thumbnail && (
+                    <img 
+                      src={project.thumbnail} 
+                      alt={`${project.title} preview`} 
+                      className="project-image-desktop" 
+                    />
+                  )
+                }
               </a>
             ))
           }
