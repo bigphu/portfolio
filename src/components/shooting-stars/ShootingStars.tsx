@@ -42,66 +42,60 @@ const ShootingStars = (): JSX.Element => {
 
   const [stars, setStars] = useState<Map<number, Star>>(new Map());
   const timeoutsRef = useRef<Map<number, ReturnType<typeof setTimeout>>>(new Map());
-  
+
   useEffect(() => {
     const currentTimeouts: Map<number, ReturnType<typeof setTimeout>> = timeoutsRef.current; 
-    let spawnStars: ReturnType<typeof setInterval>;
 
-    const initialDelay = setTimeout(() => {
+    const spawnStars = setInterval((): void => {      
+      const starCount: number = Math.floor(Math.random() * offsetCount) + minStarCount;
 
-      spawnStars = setInterval((): void => {      
-        const starCount: number = Math.floor(Math.random() * offsetCount) + minStarCount;
-
-        // Spawn from 1 to 5 stars each interval
-        const newStars: Star[] = Array.from({ length: starCount }, (): Star => {
-          return {
-            id: Date.now() + Math.random(),
-            
-            x: Math.random() * offsetX + minSpawnX, 
-            y: Math.random() * offsetY + minSpawnY,
-            
-            length: Math.random() * offsetLen + minTrailLen,    // Tail length: 80px to 180px
-            distance: Math.random() * offsetTravelDist + minTravelDist, // Travel distance: 800px to 1400px
-            duration: Math.random() * offsetDuration + minDuration, 
-          };
-        });
-        
-        // --- UPDATE STAR MAP ---
-        setStars((prev): Map<number, Star> => { 
-          const newMap: Map<number, Star> = new Map<number, Star>(prev);
-
-          newStars.forEach((star) => {
-            newMap.set(star.id, star);
-          })
+      // Spawn from 1 to 5 stars each interval
+      const newStars: Star[] = Array.from({ length: starCount }, (): Star => {
+        return {
+          id: Date.now() + Math.random(),
           
-          return newMap;
-        });
-        
-        // --- STAR MAP CLEANUP ---
-        newStars.forEach((star): void => {
-          const timeoutId: ReturnType<typeof setTimeout> = setTimeout(() => {
+          x: Math.random() * offsetX + minSpawnX, 
+          y: Math.random() * offsetY + minSpawnY,
+          
+          length: Math.random() * offsetLen + minTrailLen,    // Tail length: 80px to 180px
+          distance: Math.random() * offsetTravelDist + minTravelDist, // Travel distance: 800px to 1400px
+          duration: Math.random() * offsetDuration + minDuration, 
+        };
+      });
+      
+      // --- UPDATE STAR MAP ---
+      setStars((prev): Map<number, Star> => { 
+        const newMap: Map<number, Star> = new Map<number, Star>(prev);
 
-            // Remove star from the map
-            setStars((prev): Map<number, Star> => { 
-              const newMap: Map<number, Star> = new Map<number, Star>(prev);
-              newMap.delete(star.id)            
-              return newMap;
-            });
-
-            // Remove its tracker
-            currentTimeouts.delete(star.id);
-          }, star.duration * 1000);
-
-          // Store tracker to delete it later
-          currentTimeouts.set(star.id, timeoutId);
+        newStars.forEach((star) => {
+          newMap.set(star.id, star);
         })
-      }, spawnInterval);
+        
+        return newMap;
+      });
+      
+      // --- STAR MAP CLEANUP ---
+      newStars.forEach((star): void => {
+        const timeoutId: ReturnType<typeof setTimeout> = setTimeout(() => {
 
-    }, 4000);
+          // Remove star from the map
+          setStars((prev): Map<number, Star> => { 
+            const newMap: Map<number, Star> = new Map<number, Star>(prev);
+            newMap.delete(star.id)            
+            return newMap;
+          });
+
+          // Remove its tracker
+          currentTimeouts.delete(star.id);
+        }, star.duration * 1000);
+
+        // Store tracker to delete it later
+        currentTimeouts.set(star.id, timeoutId);
+      })
+    }, spawnInterval);
 
     return (): void => {
-      clearTimeout(initialDelay);
-      if (spawnStars) clearInterval(spawnStars);
+      clearInterval(spawnStars);
       currentTimeouts.forEach((timeout) => {
         clearTimeout(timeout);
       });
