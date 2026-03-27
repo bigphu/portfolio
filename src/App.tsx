@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Suspense, lazy } from "react";
 
 import "@/data/global.css"; 
-import { Preloader, ShootingStars, ScrollIndicator } from "@/components"; 
+import { Preloader, ShootingStars, ScrollIndicator, Footer } from "@/components"; 
 
 const Banner = lazy(() => import("@/pages/banner/Banner"));
 const Skills = lazy(() => import("@/pages/skills/Skills"));
@@ -33,6 +33,8 @@ const App = () => {
               } 
             />
           </Routes>
+
+          <Footer />
         </main>
       </div>
     </Router>
