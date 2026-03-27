@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import type { ErrorResponse } from "react-router-dom";
 
 export interface GitHubRepo {
   id: number;
