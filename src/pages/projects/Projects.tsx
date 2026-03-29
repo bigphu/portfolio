@@ -7,6 +7,7 @@ import "./Projects.css";
 import golfClubThumbnail from "@/assets/golf-club-homepage.png";
 import studyBuddyThumbnail from "@/assets/study-buddy-dashboard.png";
 import quickBuyThumbnail from "@/assets/quickbuy-homepage.png";
+import asciiThumbnail from "@/assets/ascii-demo.gif";
 
 // MOCK DATA (Will replace with API data later (maybe))
 const projects = [
@@ -30,13 +31,14 @@ const projects = [
   },
   {
     slug: "tyc-compiler",
-    title: "TyC Compiler",
+    title: "TyC Compiler (private)",
     techStack: ["Python", "Compiler Design", "ANTLR"],
   },
   {
     slug: "3d-ascii-renderer",
     title: "3D ASCII Renderer",
-    techStack: ["C++", "Graphics Programming"]
+    techStack: ["C++", "Graphics Programming"],
+    thumbnail: asciiThumbnail
   }
 ];
 
