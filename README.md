@@ -1,4 +1,4 @@
-# Personal Portfolio Website
+# 👤 Personal Portfolio Website
 
 A modern, interactive personal portfolio website built with React, TypeScript, and Vite. This project showcases professional skills, projects, and provides a way to connect with visitors through contact functionality.
 
