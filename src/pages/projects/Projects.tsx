@@ -5,8 +5,8 @@ import { Button } from "@/components"
 import { useOpenGithub } from "@/hooks";
 import "./Projects.css";
 import golfClubThumbnail from "@/assets/golf-club-homepage.png";
-import studyBuddyThumbnail from "@/assets/study-buddy-dashboard.png";
-import quickBuyThumbnail from "@/assets/quickbuy-homepage.png";
+// import studyBuddyThumbnail from "@/assets/study-buddy-dashboard.png";
+// import quickBuyThumbnail from "@/assets/quickbuy-homepage.png";
 import asciiThumbnail from "@/assets/ascii-demo.gif";
 
 // MOCK DATA (Will replace with API data later (maybe))
@@ -17,29 +17,35 @@ const projects = [
     techStack: ["ReactJS", "ExpressJS", "TailwindCSS", "Docker"],
     thumbnail: golfClubThumbnail
   },
-  {
-    slug: "study-buddy",
-    title: "Study Buddy",
-    techStack: ["ReactJS", "ExpressJS", "TailwindCSS", "MySQL"],
-    thumbnail: studyBuddyThumbnail
-  },
-  {
-    slug: "quick-buy",
-    title: "QuickBuy",
-    techStack: ["ReactJS", "ExpressJS", "TailwindCSS", "MySQL"],
-    thumbnail: quickBuyThumbnail
-  },
-  {
-    slug: "tyc-compiler",
-    title: "TyC Compiler (private)",
-    techStack: ["Python", "Compiler Design", "ANTLR"],
-  },
+  // {
+    //   slug: "study-buddy",
+    //   title: "Study Buddy",
+    //   techStack: ["ReactJS", "ExpressJS", "TailwindCSS", "MySQL"],
+  //   thumbnail: studyBuddyThumbnail
+  // },
+  // {
+    //   slug: "quick-buy",
+    //   title: "QuickBuy",
+    //   techStack: ["ReactJS", "ExpressJS", "TailwindCSS", "MySQL"],
+    //   thumbnail: quickBuyThumbnail
+    // },
+    // {
+      //   slug: "tyc-compiler",
+      //   title: "TyC Compiler (private)",
+      //   techStack: ["Python", "Compiler Design", "ANTLR"],
+      // },
   {
     slug: "3d-ascii-renderer",
     title: "3D ASCII Renderer",
     techStack: ["C++", "Graphics Programming"],
     thumbnail: asciiThumbnail
-  }
+  },
+  {
+    slug: "iot-farm",
+    title: "IoT Smart Farm",
+    techStack: ["TypeScript", "NestJS", "Event-Driven Architecture"],
+    thumbnail: null
+  },
 ];
 
 const Projects = (): JSX.Element => {
